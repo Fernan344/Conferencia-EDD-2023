@@ -90,11 +90,7 @@ export default class Arbol {
 
     build() {
         const g = graphviz.digraph("G");
-        this.node.build(g);
+        this.raiz.build(g);
         return g.to_dot();
-    }
-
-    generateHash() {
-        return crypto.createHash('sha256').update(JSON.stringify(this)).digest('hex');
     }
 }

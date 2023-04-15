@@ -18,8 +18,10 @@ async function GET (req, res) {
     binary.agregarDato({dato: 'Estructurales', descripcion: 'Que realiza un análisis o estudio de una cosa considerándola una estructura o un conjunto de estructuras susceptibles de formalización.', key: 5})
 
     const predictiveBuilded = binary.predictive.build()
+    const binaryBuilded = binary.build();
     console.log(predictiveBuilded);
-    res.status(StatusCodes.OK).send({predictive: predictiveBuilded})  
+    console.log(binaryBuilded);
+    res.status(StatusCodes.OK).send({predictive: predictiveBuilded, binary: binaryBuilded});  
 }
 
 export default async function api (req, res)  {
