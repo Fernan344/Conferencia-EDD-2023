@@ -41,7 +41,7 @@ export default function Home() {
     return (
         <>
             <NavBar searchState = {setSearchValue}/>
-            <h1>BIENVENIDO!!!!</h1>   
+            <h1>BIENVENIDO A LA CONFERENCIA DE Estructuras!!!!</h1>   
             <button type="button" class="btn btn-outline-warning" onClick={() => { build() }}>BUILD</button>
             <div class="find-results" style={{justifyContent: 'center'}}>
                 {results} 
