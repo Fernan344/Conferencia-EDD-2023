@@ -1,10 +1,10 @@
 import errorMidleware from '../../../../src/utils/http/http-error-handler';
 import { HttpMiddleware } from '../../../../src/utils/http/http-middleware';
-import { predictive } from "../../../../globals";
+import { binary } from "../../../../globals";
 
 async function GET (req, res) {    
   const { value } = req.query;
-  const results = predictive.getMatches(value)
+  const results = binary.predictive.getMatches(value)
   res.json(results);
 }
 

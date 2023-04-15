@@ -2,14 +2,18 @@ import Nodo from "./Nodo";
 import lodash from "lodash";
 import crypto from "crypto";
 import graphviz from 'graphviz';
+import get from 'lodash/get'
 
 export default class Arbol {
     raiz;
     key;
+    predictiveKey;
+    predictive
 
-    constructor(key) {  
-        this.key = key;
-        this.graphIndex = 0;
+    constructor(primaryKey, predictiveKey, predictive) {  
+        this.key = primaryKey;
+        this.predictiveKey = predictiveKey;
+        this.predictive = predictive;
     }
 
     getKey() {
@@ -24,10 +28,15 @@ export default class Arbol {
         this.raiz = value;
     }
 
+    setData(value){
+        this.predictive.agregarDato({value: get(value, this.predictiveKey), key: get(value, this.key)})
+        return {success: true, message: 'Dato ingrasado correctamente.'}
+    }
+
     agregarDato(value) {
         if(!this.raiz){
-            this.setRaiz(new Nodo(value))
-            return {success: true, message: 'Dato ingrasado correctamente.'}
+            this.setRaiz(new Nodo(value))              
+            return this.setData(value)
         }else{
             let actual = this.getRaiz()
             const valueKey = lodash.get(value, this.key).toString()
@@ -51,8 +60,8 @@ export default class Arbol {
                 }else{
                     return {success: false, message: 'Error al ingresar el dato.'}
                 }
-            }
-            return {success: true, message: 'Nodo Ingresado Correctamente'}
+            }            
+            return this.setData(value)
         }
     }
 

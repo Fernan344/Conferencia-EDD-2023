@@ -23,10 +23,9 @@ export default function Home() {
         if(searchValue !== "")      
             search(searchValue)
                 .then((data) => {
-                  console.log(searchValue)
-                    const newResults = data.length ? data.map(element => 
+                    const newResults = data.length ? data.map((element, index) => 
                         (
-                            <div class="row">
+                            <div class="row" key={`option${index}`}>
                                 <div class="column"><p>{element.value}</p></div>
                                 <div class="column">
                                     <button type="button" class="btn btn-find btn-outline-warning" onClick={() => findOption(element.key)} style={{marginLeft: '25px'}}>Buscar</button>
